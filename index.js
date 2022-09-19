@@ -15,25 +15,34 @@ console.log('🚀 It Works!');
 // 📝 TODO: Number of filming locations
 // 1. Make the function return the number of filming locations
 function getFilmingLocationsNumber () {
-	return ''
+	const keyCount  = Object.keys(filmingLocations).length;
+	return keyCount;
 }
 console.log(`There is ${getFilmingLocationsNumber()} filming locations in Paris`)
 
 // 📝 TODO: Filming locations sorted by start date, from most recent to oldest.
 // 1. Implement the function
 // 2. Log the first and last item in array
-function sortFilmingLocationsByStartDate () {
-	return ''
+function sortFilmingLocationsByStartDate (filmArray) {
+	return filmArray.sort(function(a, b){
+		return a.fields.date_debut - b.fields.date_debut;
+	});
 }
-console.log(``)
+const resultat1 = sortFilmingLocationsByStartDate(filmingLocations);
+console.log(resultat1[0].fields.date_debut,resultat1[resultat1.length-1].fields.date_debut)
 
 // 📝 TODO: Number of filming locations in 2020 only
 // 1. Make the function return the number of filming locations in 2020 only
 // 2. Log the result
-function getFilmingLocationsNumber2020 () {
-	return ''
+function getFilmingLocationsNumber2020 (filmArray) {
+	
+	const result= filmArray.map(function(film) { 
+		if(film.fields.annee_tournage == 2020)
+		return film;
+	  });
+	  return sortFilmingLocationsByStartDate(result)
 }
-console.log()
+console.log(getFilmingLocationsNumber2020(filmingLocations))
 
 // 📝 TODO: Number of filming locations per year
 // 1. Implement the function, the expected result is an object with years as
