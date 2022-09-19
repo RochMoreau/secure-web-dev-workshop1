@@ -18,7 +18,7 @@ function getFilmingLocationsNumber () {
 	const keyCount  = Object.keys(filmingLocations).length;
 	return keyCount;
 }
-console.log(`There is ${getFilmingLocationsNumber()} filming locations in Paris`)
+//console.log(`There are ${getFilmingLocationsNumber()} filming locations in Paris`)
 
 // 📝 TODO: Filming locations sorted by start date, from most recent to oldest.
 // 1. Implement the function
@@ -29,12 +29,12 @@ function sortFilmingLocationsByStartDate (filmArray) {
 	});
 }
 const resultat1 = sortFilmingLocationsByStartDate(filmingLocations);
-console.log(resultat1[0].fields.date_debut,resultat1[resultat1.length-1].fields.date_debut)
+//console.log(resultat1[0].fields.date_debut,resultat1[resultat1.length-1].fields.date_debut)
 
 // 📝 TODO: Number of filming locations in 2020 only
 // 1. Make the function return the number of filming locations in 2020 only
 // 2. Log the result
-/*
+
 function getFilmingLocationsNumber2020 (filmArray) {
 	
 	const result= filmArray.map(function(film) { 
@@ -43,8 +43,8 @@ function getFilmingLocationsNumber2020 (filmArray) {
 	  });
 	  return sortFilmingLocationsByStartDate(result)
 }
-console.log(getFilmingLocationsNumber2020(filmingLocations))
-*/
+//console.log(getFilmingLocationsNumber2020(filmingLocations))
+
 
 
 
@@ -56,31 +56,23 @@ console.log(getFilmingLocationsNumber2020(filmingLocations))
 //      '2021': 1234,
 //    }
 // 2. Log the result
+function countFilmsByYear(){
 
-function getnumberfilmofyear(year)
-{
-	const filmsOfYears= filmingLocations.map(function(film) { 
-		if(film.fields.annee_tournage == year)
-		return film;
-	  });
+	let data = {}
+	for(let i = 0; i < filmingLocations.length-1; i++)
+	{
+		if (filmingLocations[i].fields.annee_tournage in data)
+		{
+			data[filmingLocations[i].fields.annee_tournage] += 1
+		}
 
-	const numberfilmsofYear  = Object.keys(filmsOfYears).length;
-	return JSON.parse(year,numberfilmsofYear);
+		else data[filmingLocations[i].fields.annee_tournage]=1
+	}
+	return data
 }
 
 
-
-
-function getFilmingLocationsNumberPerYear () {
-	let jsonArrayResult = {}
-	
-	
-
-	  return result;
-}
-
-
-console.log(getnumberfilmofyear(2020))
+console.log(countFilmsByYear())
 
 // 📝 TODO: Number of filming locations by district (arrondissement)
 // 1. Implement the function, the expected result is an object with
