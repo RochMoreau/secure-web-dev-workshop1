@@ -1,5 +1,5 @@
 # Manipulate Data with Javascript and NodeJS
-HUGO
+
 ## 🌟 Goal
 
 > Learning Javascript basics by manipulating arrays, objects, functions etc...
